@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap");
+@import "./palette.scss";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 18px;
+  background: $color-bg;
+  color: $color-text;
+}
+h1 {
+  font-size: 2.5em;
+}
+.content-container {
+  width: 100%;
+  margin: 0 auto;
+  @media (min-width: 1400px) {
+    max-width: 1385px;
+  }
+}

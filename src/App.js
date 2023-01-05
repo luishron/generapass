@@ -1,10 +1,11 @@
+import { Footer, Generator, Header } from "./components";
+
 function App() {
   return (
     <>
-      <h1>GeneraPass</h1>
-      {/* <Header />
+      <Header />
       <Generator />
-      <Footer /> */}
+      <Footer />
     </>
   );
 }
