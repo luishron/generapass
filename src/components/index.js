@@ -1,3 +1,4 @@
 export * from "./footer/Footer";
-export * from "./generator/Generator";
+export * from "./generator-form/GeneratorForm";
+export * from "./generator-result/GeneratorResult";
 export * from "./header/Header";

@@ -1,0 +1,61 @@
+@import "../../style/palette.scss";
+
+.generator-result {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  width: 100%;
+  color: $color-bg;
+  font-weight: 600;
+  padding: 0.5em 1em;
+  border-radius: 0.3em;
+
+  input {
+    flex-grow: 1;
+    border: none;
+    font-size: 1.5em;
+    color: inherit;
+    background: none;
+  }
+  span {
+    font-size: 1.5em;
+  }
+}
+.unsafe,
+.low,
+.medium,
+.highly {
+  transition: all ease-in-out 0.3s;
+}
+.unsafe {
+  background: lighten($color-red, 30);
+  color: darken($color-red, 40);
+}
+.low {
+  background: lighten($color-orange, 30);
+  color: darken($color-orange, 40);
+}
+.medium {
+  background: lighten($color-green, 30);
+  color: darken($color-green, 40);
+}
+.highly {
+  background: lighten($color-primary, 30);
+  color: darken($color-primary, 40);
+}
+.unsafe-text {
+  color: $color-red;
+  padding: 0.5em 0;
+}
+.low-text {
+  color: $color-orange;
+  padding: 0.5em 0;
+}
+.medium-text {
+  color: $color-green;
+  padding: 0.5em 0;
+}
+.highly-text {
+  color: $color-primary;
+  padding: 0.5em 0;
+}

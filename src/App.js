@@ -1,10 +1,10 @@
-import { Footer, Generator, Header } from "./components";
+import { Footer, GeneratorForm, Header } from "./components";
 
 function App() {
   return (
     <>
       <Header />
-      <Generator />
+      <GeneratorForm />
       <Footer />
     </>
   );

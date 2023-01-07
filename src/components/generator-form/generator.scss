@@ -1,0 +1,130 @@
+@import "../../style/palette.scss";
+
+.generator-form {
+  background-color: lighten($color-bg, 5);
+  margin: 1em auto;
+  padding: 1em;
+  max-width: 600px;
+  border-radius: 0.2em;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 1em -8px;
+}
+.input-length {
+  padding: 0.5em 1em;
+  width: 4em;
+  border: 1px solid darken($color-bg, 30);
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+// Estilo para el contenedor del checkbox
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin: 1em 0;
+  gap: 0.5em;
+
+  // Estilo para el checkbox en sí
+  input[type="checkbox"] {
+    appearance: none;
+    width: 2em;
+    height: 2em;
+    border: 2px solid #0ead69;
+    border-radius: 3px;
+    margin-right: 10px;
+    position: relative;
+    cursor: pointer;
+
+    // Estilo para la marca del checkbox (✔️)
+    &:before {
+      content: "";
+      display: none;
+      position: absolute;
+      top: 0.2em;
+      left: 0.5em;
+      width: 0.5em;
+      height: 1em;
+      border: solid $color-secondary-light;
+      border-width: 0 4px 4px 0;
+      transform: rotate(45deg);
+    }
+
+    // Estilo para el checkbox cuando está seleccionado
+    &:checked {
+      border-color: $color-primary;
+
+      &:before {
+        display: block;
+      }
+    }
+
+    // Estilo para el checkbox cuando está deshabilitado
+    &:disabled {
+      border-color: #9e9e9e;
+      background-color: #e0e0e0;
+      cursor: default;
+    }
+  }
+
+  // Estilo para la etiqueta del checkbox
+  label {
+    font-size: 1em;
+    color: $color-secondary-light;
+    cursor: pointer;
+
+    // Estilo para la etiqueta cuando el checkbox está deshabilitado
+    &:disabled {
+      color: #9e9e9e;
+      cursor: default;
+    }
+  }
+}
+input[type="range"] {
+  width: 100%;
+  // Estilos para el track del range
+  &::-webkit-slider-runnable-track {
+    // Ancho y alto del track
+    width: 100%;
+    height: 1.2em;
+
+    // Fondo del track
+    background: #0ead69;
+
+    // Borde del track
+    border-radius: 0.5em;
+    border: 0;
+  }
+
+  // Estilos para el thumb del range
+  &::-webkit-slider-thumb {
+    // Tamaño y forma del thumb
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background-color: $color-secondary-light;
+
+    // Fondo y borde del thumbab
+    background: white;
+    border: 2px solid #0ead69;
+
+    // Estilo del cursor al mover el thumb
+    cursor: pointer;
+  }
+
+  // Estilos para el thumb del range en Firefox
+  &::-moz-range-thumb {
+    // Tamaño y forma del thumb
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+
+    // Fondo y borde del thumb
+    background: white;
+    border: 2px solid #0ead69;
+
+    // Estilo del cursor al mover el thumb
+    cursor: pointer;
+  }
+}

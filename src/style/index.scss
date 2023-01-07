@@ -12,7 +12,8 @@ body {
   color: $color-text;
 }
 h1 {
-  font-size: 2.5em;
+  font-size: 1.5em;
+  padding-bottom: 1em;
 }
 .content-container {
   width: 100%;
@@ -20,4 +21,16 @@ h1 {
   @media (min-width: 1400px) {
     max-width: 1385px;
   }
+}
+.text-center {
+  text-align: center;
+}
+.btn {
+  padding: 1em 1.5em;
+}
+.input-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5em;
 }
