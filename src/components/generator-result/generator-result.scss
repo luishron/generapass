@@ -3,59 +3,109 @@
 .generator-result {
   display: flex;
   flex-direction: row;
-  gap: 1em;
+  gap: 0.5em;
   width: 100%;
   color: $color-bg;
   font-weight: 600;
-  padding: 0.5em 1em;
-  border-radius: 0.3em;
+  padding: 0.5em;
+  border-radius: 0.3em 0.3em 0 0;
 
   input {
     flex-grow: 1;
     border: none;
-    font-size: 1.5em;
+    font-size: 1.2em;
     color: inherit;
     background: none;
+    &:focus {
+      outline: none;
+      outline-offset: 0;
+    }
+
+    &:active {
+      outline: none;
+      outline-offset: 0;
+    }
   }
-  span {
-    font-size: 1.5em;
+}
+.generator-result {
+  &.unsafe,
+  &.low,
+  &.medium,
+  &.highly {
+    transition: all ease-in-out 0.3s;
+    &.unsafe {
+      background: lighten($color-red, 30);
+      border-bottom: 4px solid $color-red;
+      color: darken($color-red, 40);
+    }
+    &.low {
+      background: lighten($color-orange, 30);
+      border-bottom: 4px solid $color-orange;
+      color: $color-orange;
+    }
+    &.medium {
+      background: lighten($color-yellow, 30);
+      border-bottom: 4px solid $color-yellow;
+      color: darken($color-yellow, 40);
+    }
+    &.highly {
+      background: lighten($color-green, 30);
+      border-bottom: 4px solid $color-green;
+      color: darken($color-green, 40);
+    }
   }
 }
-.unsafe,
-.low,
-.medium,
-.highly {
-  transition: all ease-in-out 0.3s;
-}
-.unsafe {
-  background: lighten($color-red, 30);
-  color: darken($color-red, 40);
-}
-.low {
-  background: lighten($color-orange, 30);
-  color: darken($color-orange, 40);
-}
-.medium {
-  background: lighten($color-green, 30);
-  color: darken($color-green, 40);
-}
-.highly {
-  background: lighten($color-primary, 30);
-  color: darken($color-primary, 40);
-}
-.unsafe-text {
-  color: $color-red;
-  padding: 0.5em 0;
-}
-.low-text {
-  color: $color-orange;
-  padding: 0.5em 0;
-}
-.medium-text {
-  color: $color-green;
-  padding: 0.5em 0;
-}
+
+.unsafe-text,
+.low-text,
+.medium-text,
 .highly-text {
-  color: $color-primary;
   padding: 0.5em 0;
+  &.unsafe-text {
+    color: $color-red;
+  }
+  &.low-text {
+    color: $color-orange;
+  }
+  &.medium-text {
+    color: $color-yellow;
+  }
+  &.highly-text {
+    color: $color-green;
+  }
+}
+
+.reset-password,
+.copy-password {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  padding: 5px;
+  position: relative;
+}
+/* El tooltip texto */
+.tooltip {
+  font-size: 0.8em;
+  font-weight: 400;
+  visibility: hidden;
+  width: 120px;
+  background-color: darken($color-bg, 10);
+  color: $color-text;
+  text-align: center;
+  padding: 0.5em;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transform: translateY(1em);
+  transition: all 0.25s ease-in-out;
+}
+
+.tooltip.active {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
 }
