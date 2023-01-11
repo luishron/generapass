@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# GeneraPass
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyecto es un formulario generador de contraseñas construido usando React. El formulario permite al usuario especificar la longitud de la contraseña generada, así como los tipos de caracteres a incluir en la contraseña (letras mayúsculas, letras minúsculas, símbolos y números).
 
-## Available Scripts
+El proyecto utiliza el estado para registrar las selecciones del usuario y la contraseña generada. Se usa el gancho `useState` para crear variables de estado para lo siguiente:
 
-In the project directory, you can run:
+- `passwordLength`: almacena la longitud de la contraseña
+- `includeUppercase`: almacena un valor booleano que indica si se deben incluir letras mayúsculas en la contraseña
+- `includeLowercase`: almacena un valor booleano que indica si se deben incluir letras minúsculas en la contraseña
+- `includeSymbols`: almacena un valor booleano que indica si se deben incluir símbolos en la contraseña
+- `includeNumbers`: almacena un valor booleano que indica si se deben incluir números en la contraseña
+- `password`: almacena la contraseña generada
 
-### `npm start`
+Se emplea el gancho `useCallback` para crear una función de callback para `generatePassword` que genera una contraseña en función de las selecciones del usuario. La contraseña se genera generando una lista de caracteres que incluir en la contraseña en función de las selecciones del usuario y luego agregando caracteres aleatorios de esta lista a la contraseña hasta alcanzar la longitud deseada.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+El Hook `useEffect` se emplea para ejecutar la función `generatePassword` tan pronto como se renderiza el componente.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Además, también hay un botón Resetear que simplemente llama de nuevo a la función generatePassword, generando otra contraseña. También válida si alguna de las opciones de checkbox fue seleccionada antes de enviar el formulario.
 
-### `npm test`
+## Comenzando
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1.  Clona este repositorio
+2.  Ejecuta `npm install` para instalar las dependencias del proyecto
+3.  Ejecuta `npm start` para iniciar el servidor de desarrollo
+4.  Abre [http://localhost:3000](http://localhost:3000/) en tu navegador para ver la aplicación
 
-### `npm run build`
+## Construido con
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- React
+- SASS
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Autores
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **GeneraPass** - [Luis H Ron](https://github.com/luishron)
 
-### `npm run eject`
+## Licencia
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Este proyecto está licenciado bajo la Licencia MIT -

@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { HiOutlineArrowPath, HiOutlineSquare2Stack } from "react-icons/hi2";
 import { limitString } from "../../utils/";
 import "./generator-result.scss";
 
-export const GeneratorResult = ({ password, copyPassword }) => {
+export const GeneratorResult = ({ password, handleReset }) => {
+  const [isCopy, setIsCopy] = useState(false);
+
+  const copyPassword = useCallback(async () => {
+    const input = document.getElementById("password");
+    const valor = input.dataset.value;
+
+    try {
+      await navigator.clipboard.writeText(valor);
+      setIsCopy(true);
+      setTimeout(() => {
+        setIsCopy(false);
+      }, 2500);
+    } catch (err) {
+      console.error("Error al intentar copiar el valor", err);
+    }
+  }, []);
+
   return (
     <>
       <div
@@ -20,15 +37,19 @@ export const GeneratorResult = ({ password, copyPassword }) => {
         <input
           id="password"
           className="result-password"
-          value={limitString(password, 24)}
+          value={limitString(password, 20)}
+          data-value={password}
           readOnly
         />
-        <br />
+
         <span className="copy-password" onClick={copyPassword}>
-          <HiOutlineSquare2Stack />
+          <HiOutlineSquare2Stack size={32} />
+          <span className={`tooltip ${isCopy ? "active" : ""}`}>
+            Password copied!
+          </span>
         </span>
-        <span className="reset-password">
-          <HiOutlineArrowPath />
+        <span className="reset-password" onClick={handleReset}>
+          <HiOutlineArrowPath size={32} />
         </span>
       </div>
 
@@ -41,7 +62,6 @@ export const GeneratorResult = ({ password, copyPassword }) => {
       ) : (
         <p className="unsafe-text">Muy poco segura</p>
       )}
-      <br />
     </>
   );
 };

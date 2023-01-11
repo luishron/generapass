@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { GeneratorResult } from "../generator-result/GeneratorResult";
+import { Share } from "../share/Share";
 import "./generator.scss";
 
 export const GeneratorForm = () => {
@@ -126,89 +127,124 @@ export const GeneratorForm = () => {
     generatePassword();
   }, [generatePassword]);
 
-  // Función para copiar la contraseña al portapapeles
-  const copyPassword = () => {
-    // Selecciona el elemento de texto que contiene la contraseña
-    const textarea = document.querySelector("#password");
-    textarea.select();
-
-    // Copia el texto seleccionado al portapapeles
-    document.execCommand("copy");
-
-    // Muestra un mensaje de éxito al usuario
-    alert("Contraseña copiada al portapapeles");
+  const handleReset = () => {
+    generatePassword();
   };
+
+  const validateCheckboxes = () => {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const activeCheckboxes = document.querySelectorAll(
+      'input[type="checkbox"]:checked'
+    );
+
+    if (activeCheckboxes.length === 1) {
+      // Obtén el último checkbox activo
+      const lastActiveCheckbox = activeCheckboxes[activeCheckboxes.length - 1];
+      // Agrega la propiedad disabled al último checkbox activo
+      setDisabled(lastActiveCheckbox, true);
+    } else if (activeCheckboxes.length === 2) {
+      for (const checkbox of checkboxes) {
+        setDisabled(checkbox, false);
+      }
+    }
+  };
+
+  const setDisabled = (element, disabled) => {
+    if (disabled) {
+      element.setAttribute("disabled", true);
+    } else {
+      element.removeAttribute("disabled");
+    }
+  };
+
   return (
-    <div className="content-container">
-      <h1 className="text-center">Generate your secure password easily</h1>
-      <section className="generator-form">
-        <GeneratorResult password={password} copyPassword={copyPassword} />
-        <form>
-          <div className="input-group">
-            <label htmlFor="passwordLength">Longitud de la contraseña:</label>
-            <input
-              type="number"
-              id="passwordLength"
-              className="input-length"
-              value={passwordLength}
-              onChange={(event) => setPasswordLength(event.target.value)}
-              min="1"
-              required
-            />
-          </div>
-          <div className="input-group">
-            <input
-              type="range"
-              id="passwordLength"
-              value={passwordLength}
-              onChange={(event) => setPasswordLength(event.target.value)}
-              min="1"
-              max="99"
-              required
-            />
-          </div>
-          <div className="checkbox-container">
-            <input
-              type="checkbox"
-              id="includeUppercase"
-              checked={includeUppercase}
-              onChange={(event) => setIncludeUppercase(event.target.checked)}
-            />
-            <label htmlFor="includeUppercase">Mayúsculas (ABC)</label>
-          </div>
-          <div className="checkbox-container ">
-            <input
-              type="checkbox"
-              id="includeLowercase"
-              checked={includeLowercase}
-              onChange={(event) => setIncludeLowercase(event.target.checked)}
-            />
-            <label htmlFor="includeLowercase">Minúsculas (abc)</label>
-          </div>
-          <div className="checkbox-container ">
-            <input
-              type="checkbox"
-              id="includeSymbols"
-              checked={includeSymbols}
-              onChange={(event) => setIncludeSymbols(event.target.checked)}
-            />
-            <label htmlFor="includeSymbols">Símbolos aleatorios (!#$)</label>
-          </div>
-          <div className="checkbox-container">
-            <input
-              type="checkbox"
-              id="includeNumbers"
-              checked={includeNumbers}
-              onChange={(event) => setIncludeNumbers(event.target.checked)}
-            />
-            <label htmlFor="includeNumbers">Números (123)</label>
-          </div>
-          {/* <br /> */}
-          {/* <button type="submit" className="btn">
-            Generar contraseña
-          </button> */}
-        </form>
-      </section>
-    </div>
+    <section className="generator">
+      <div className="content-container">
+        <h1 className="main-title text-center">
+          Generate your secure password easily
+        </h1>
+        <div className="generator-form">
+          <GeneratorResult password={password} handleReset={handleReset} />
+          <form>
+            <div className="input-group">
+              <label htmlFor="passwordLength">Password length:</label>
+              <input
+                type="number"
+                id="passwordLength"
+                className="input-length"
+                value={passwordLength}
+                onChange={(event) => {
+                  setPasswordLength(event.target.value);
+                  validateCheckboxes();
+                }}
+                min="1"
+                required
+              />
+            </div>
+            <div className="input-group">
+              <input
+                type="range"
+                id="passwordLength"
+                value={passwordLength}
+                onChange={(event) => setPasswordLength(event.target.value)}
+                min="1"
+                max="99"
+                required
+              />
+            </div>
+            <div className="checkbox-container">
+              <input
+                type="checkbox"
+                id="includeUppercase"
+                checked={includeUppercase}
+                onChange={(event) => {
+                  setIncludeUppercase(event.target.checked);
+                  validateCheckboxes();
+                }}
+              />
+              <label htmlFor="includeUppercase">Capitalization (ABC)</label>
+            </div>
+            <div className="checkbox-container ">
+              <input
+                type="checkbox"
+                id="includeLowercase"
+                checked={includeLowercase}
+                onChange={(event) => {
+                  setIncludeLowercase(event.target.checked);
+                  validateCheckboxes();
+                }}
+              />
+              <label htmlFor="includeLowercase">Lowercase (abc)</label>
+            </div>
+            <div className="checkbox-container ">
+              <input
+                type="checkbox"
+                id="includeSymbols"
+                checked={includeSymbols}
+                onChange={(event) => {
+                  setIncludeSymbols(event.target.checked);
+                  validateCheckboxes();
+                }}
+              />
+              <label htmlFor="includeSymbols">Random symbols (!#$)</label>
+            </div>
+            <div className="checkbox-container">
+              <input
+                type="checkbox"
+                id="includeNumbers"
+                checked={includeNumbers}
+                onChange={(event) => {
+                  setIncludeNumbers(event.target.checked);
+                  validateCheckboxes();
+                }}
+              />
+              <label htmlFor="includeNumbers">Numbers (123)</label>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <Share />
+    </section>
   );
 };

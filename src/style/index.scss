@@ -13,13 +13,17 @@ body {
 }
 h1 {
   font-size: 1.5em;
-  padding-bottom: 1em;
+  padding-bottom: 0.5em;
 }
+
 .content-container {
   width: 100%;
   margin: 0 auto;
+  padding: 16px;
+
   @media (min-width: 1400px) {
-    max-width: 1385px;
+    max-width: 1400px;
+    padding: 16px;
   }
 }
 .text-center {
@@ -33,4 +37,8 @@ h1 {
   flex-direction: row;
   align-items: center;
   gap: 0.5em;
+  margin-bottom: 1em;
+}
+a {
+  text-decoration: none;
 }

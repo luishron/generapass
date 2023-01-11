@@ -5,10 +5,22 @@
   flex-direction: row;
   align-items: center;
   height: 70px;
-  background-color: $color-primary;
+  background-color: lighten($color-bg, 5%);
   color: $color-text;
-  margin-bottom: 2em;
+
   .brand {
-    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
+    img {
+      height: 50px;
+      width: auto;
+    }
+    span {
+      font-weight: bold;
+      letter-spacing: 1px;
+      position: relative;
+    }
   }
 }

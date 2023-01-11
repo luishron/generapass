@@ -1,10 +1,12 @@
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { getCurrentYear } from "../../utils";
+import "./footer.scss";
 
 export const Footer = () => {
   const currentYear = getCurrentYear();
   return (
     <footer>
-      {/* <div className="content-container">
+      <div className="content-container">
         <div className="copyright">
           <p>
             Copyright {currentYear} - GeneraPass by{" "}
@@ -33,7 +35,7 @@ export const Footer = () => {
             <FaLinkedin size={32} />
           </a>
         </div>
-      </div> */}
+      </div>
     </footer>
   );
 };

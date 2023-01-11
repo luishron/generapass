@@ -1,0 +1,13 @@
+@import "../../style/palette.scss";
+
+.share {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5em;
+  color: lighten($color-bg, 10);
+  transition: all ease-in-out 0.3s;
+  &:hover {
+    color: $color-primary;
+  }
+}
